@@ -1,29 +1,36 @@
-/* Write a C++ program to calculate area and circumference of a Circle. (Use default 
-argument, scope resolution operator and manipulator.)  */
+/*Write a C++ program to calculate area and circumference of a Circle. (Use default 
+argument, scope resolution operator and manipulator.)*/
 
-
-#include<iostream>
+#include <iostream>
 using namespace std;
-class circle
-{
-    public:
-    
-    void area_and_circum();
 
+class Circle {
+    double radius;
+public:
+    Circle(double r) 
+    {
+      radius=r; 
+    }
+    double area(double pi=3.14);         
+    double circumference(double pi=3.14); 
 };
-void circle::area_and_circum()
+
+double Circle::area(double pi)
 {
-    float radius;
-    cout<<"enter radius:";
-    cin>>radius;
-    float area=3.14*radius*radius;
-    float circum=2*3.14*radius;
-    cout<<"area of circle:"<<area<<endl;
-    cout<<"circumference of circle:"<<circum;
+    return pi*radius*radius;
 }
 
-int main()
+double Circle::circumference(double pi) 
 {
-    circle ob;
-    ob.area_and_circum();
+    return 2*pi*radius;
+}
+
+int main() {
+    double r;
+    cout<<"Enter radius of circle: ";
+    cin>>r;
+    Circle c(r);
+    cout<<"Area of Circle ="<<c.area()<<endl;
+    cout<<"Circumference of Circle = "<<c.circumference()<<endl;
+    return 0;
 }
