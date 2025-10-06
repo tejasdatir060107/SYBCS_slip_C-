@@ -14,7 +14,7 @@ class a1
         cout<<"enter number 1:";
         cin>>a;
     }
-    void multiply(a1 obj,b1 obj1);
+    class b1;
 };
 class b1
 {
@@ -25,12 +25,12 @@ class b1
         cout<<"enter number 2:";
         cin>>b;
     }
-    void multiply(a1 obj,b1 obj1);
+    void multiply(a1 obj)
+    {
+        cout<<"multiplication:"<<obj.a*b;
+    }
 };
-void multiply(a1 obj,b1 obj1)
-{
-    cout<<"multiplication:"<<obj.a*obj1.b;
-}
+
 int main()
 {
    a1 obj;
@@ -38,6 +38,6 @@ int main()
     b1 obj1;
     obj1.accept();
 
-    multiply(obj,obj1);
+    obj1.multiply(obj);
 
 }
