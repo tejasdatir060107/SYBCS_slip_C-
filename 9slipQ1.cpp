@@ -151,7 +151,8 @@ int main()
                     	}
                 	}
             	}
-        	break;		
+        	break;
+			default:cout<<"invalid choice......";
     	}	
     }while(ch!=4);
 }
