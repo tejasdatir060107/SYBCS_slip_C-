@@ -5,143 +5,153 @@ i. Accept the details of ‘n’ employees and calculate the salary.
 ii. Display the details of ‘n’ employees.
 iii. Search a given Employee. */
 
+
 #include<iostream>
 using namespace std;
-
-class Employee
+class employee
 {
     public:
-    int ecode;
-    string name;
-    void accept_emp()
-    {
-        cout<<"Enter Employee code and Name:";
-        cin>>ecode>>name;
-    }
-
-    void display()
-    {
-        cout<<"\nEmployee Name:"<<name;
-        cout<<"\nEmployee code:"<<ecode<<endl;
-    }
+        int emp_code;
+        char name[30];
+        void accept()
+        {
+            cout<<"enter employee code and name:";
+            cin>>emp_code>>name;
+        }
+        void disp()
+        {
+            cout<<endl<<"employee code:"<<emp_code<<endl;
+            cout<<"employee name:"<<name<<endl;
+        }
 };
-
-class Fulltime:public Employee
+class fulltime:public employee
 {
     public:
-     double d_rate,sal;
-     int n_day;
-
-     void accept_full()
-     {
-        Employee::accept_emp();
-        cout<<"Enter Number of days:"; cin>>n_day;
-        cout<<"Enter Daily rate:";  cin>>d_rate;
-       
-     }
-
-     void display()
-     {
-        Employee::display();
-        cout<<"\nNumber of days:"<<n_day;
-        cout<<"\nDaily rate:"<<d_rate;
-        cout<<"\nFulltime Salary:"<<n_day*d_rate<<endl;
-     }
+        int drate,no_of_day,salary;
+        void full_accept()
+        {
+            employee::accept();
+            cout<<"enter daily rate:";
+            cin>>drate;
+            cout<<"enter number of days:";
+            cin>>no_of_day;
+            
+            salary=drate*no_of_day;
+        }
+        void full_disp()
+        {
+            employee::disp();
+            cout<<"daily rate:"<<drate<<endl;
+            cout<<"no of days:"<<no_of_day<<endl;
+            cout<<"salary:"<<salary<<endl;
+        }
 };
-
-class Partime:public Employee
+class parttime:public employee
 {
     public:
-     int n_hour;
-     double h_rate,sal;
-
-     void accept_part()
-     {
-        Employee::accept_emp();
-        cout<<"Enter number of hours:";
-        cin>>n_hour;
-        cout<<"Enter Hourly rate:";
-        cin>>h_rate;
-     }
-
-     void display()
-     {
-        Employee::display();
-         cout<<"\nNumber of hours:"<<n_hour;
-        cout<<"\nHourly rate:"<<h_rate;
-        cout<<"\nPartime Salary:"<<n_hour*h_rate<<endl;
-     }
+        int no_of_work_hour,hourly_rate,salary;
+        void part_accept()
+        {
+            employee::accept();
+            cout<<"enter working hour:";
+            cin>>no_of_work_hour;
+            cout<<"enter hourly rate:";
+            cin>>hourly_rate;
+            salary=no_of_work_hour*hourly_rate;
+        }
+        void part_disp()
+        {
+            employee::disp();
+            cout<<"working hour:"<<no_of_work_hour<<endl;
+            cout<<"hourly rate:"<<hourly_rate<<endl;
+            cout<<"salary:"<<salary<<endl;
+        }
 };
-
 int main()
 {
-    int n,i,a,ch,ecd;
-    cout<<"Enter limit:"; 
-    cin>>n;
-
-    Partime p[n];
-    Fulltime f[n];
-
-    cout<<"\nPress 0 for Fulltime and 1 for Partime Employee:";
-    cin>>a;
     
-    do{
-        cout<<"\n\n1-Accept Employee\n2-Display\n3-Search\n4-Exit\nEnter choice:";
-        cin>>ch;
-        switch(ch)
-        {
-            case 1:if(a==0)
-                   {
-                        for(i=0;i<n;i++)
-                        {
-                            f[i].accept_full();
-                        }
-                   }
 
-                   if(a==1)
-                   {
-                        for(i=0;i<n;i++)
-                        {
-                             p[i].accept_part();
-                        }
-                   }
-                   break;
+    int a,n,ch;
+    
+    cout<<endl<<"1-fulltime:\n2-parttime:";
+    cin>>a;
 
-            case 2:if(a==0)
-                   {
-                        for(i=0;i<n;i++)
-                        {
-                            f[i].display();
-                        }
-                   }
-                   if(a==1)
-                   {
-                       for(i=0;i<n;i++)
-                       {
-                             p[i].display();
-                       }
-                   }
-                   break;
 
-            case 3:cout<<"\nEnter Employee code to search:"       ;
-                    cin>>ecd;
+    cout<<"enter limit:";
+    cin>>n;
+    
+    fulltime f[n];
+    parttime p[n];
+    do
+    {
+    	cout<<"\nMENU\n1-accept deatil\n2-disp detail\n3-search\nenter choice\n";
+    	cin>>ch;
+    	switch(ch)
+    	{
 
-                    for(i=0;i<n;i++)
-                    {
-                        if(f[i].ecode==ecd)
-                        {
-                            cout<<"\nFulltime Employee found"<<endl;
-                            f[i].display();
-                            break;
-                        }
-                         if(p[i].ecode==ecd)
-                        {
-                            cout<<"\nParttime Employee found"<<endl;
-                            p[i].display();
-                            break;
-                        }
-                    }
-                    break;          
-        }
+    		case 1:
+            	if(a==1)
+            	{
+                	for(int i=0;i<n;i++)
+                	{
+                		f[i].full_accept();
+                	}
+            	}
+            	else
+            	{
+                	for(int i=0;i<n;i++)
+                	{
+                    	p[i].part_accept();
+                	}
+            	}
+    		break;
+    		
+    		case 2:
+            	if(a==1)
+            	{
+                	for(int i=0;i<n;i++)
+                	{
+                    	f[i].full_disp();
+                	}
+            	}
+            	else
+            	{
+               		for(int i=0;i<n;i++)
+                	{
+                    	p[i].part_disp();
+                	}
+            	}
+    		break;
+
+    		case 3:
+    			int search;
+            	cout<<"enter emp code to search:";
+            	cin>>search;
+		
+        		if(a==1)
+        		{
+            
+                	for(int i=0;i<n;i++)
+                	{
+                    	if(f[i].emp_code==search)
+                    	{
+                        	cout<<"detail of search employee"<<endl;
+                        	f[i].full_disp();
+                    	}
+                	}
+        		}
+        		else
+            	{
+                	for(int i=0;i<n;i++)
+                	{
+	                	if(p[i].emp_code==search)
+   		            	{
+                        	cout<<"detail of search employee"<<endl;
+                	    	    p[i].part_disp();
+                    	}
+                	}
+            	}
+        	break;		
+    	}	
     }while(ch!=4);
 }
