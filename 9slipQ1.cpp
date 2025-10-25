@@ -76,7 +76,8 @@ class Partime:public Employee
 int main()
 {
     int n,i,a,ch,ecd;
-    cout<<"Enter limit:"; cin>>n;
+    cout<<"Enter limit:"; 
+    cin>>n;
 
     Partime p[n];
     Fulltime f[n];
@@ -91,34 +92,34 @@ int main()
         {
             case 1:if(a==0)
                    {
-                    for(i=0;i<n;i++)
-                    {
-                     f[i].accept_full();
-                    }
+                        for(i=0;i<n;i++)
+                        {
+                            f[i].accept_full();
+                        }
                    }
 
                    if(a==1)
                    {
-                    for(i=0;i<n;i++)
-                    {
-                     p[i].accept_part();
-                    }
+                        for(i=0;i<n;i++)
+                        {
+                             p[i].accept_part();
+                        }
                    }
                    break;
 
             case 2:if(a==0)
                    {
-                    for(i=0;i<n;i++)
-                    {
-                     f[i].display();
-                    }
+                        for(i=0;i<n;i++)
+                        {
+                            f[i].display();
+                        }
                    }
-                    if(a==1)
+                   if(a==1)
                    {
-                    for(i=0;i<n;i++)
-                    {
-                     p[i].display();
-                    }
+                       for(i=0;i<n;i++)
+                       {
+                             p[i].display();
+                       }
                    }
                    break;
 
